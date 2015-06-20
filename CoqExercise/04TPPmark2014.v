@@ -542,7 +542,7 @@ apply (transfiniten1 P k Pk (H1 k Pk)).
 Qed.
 
 (** %
-\section{命題}  
+\section{主定理}  
 
 % **)
 
@@ -722,9 +722,22 @@ apply (conj (proj1 AB0) (conj (proj2 AB0) C0)).
 Qed.
 
 (** %
+
+\section{補足}
+
+半径$3$の円周上にある有理点, すなわち, $x^2+y^2=3$を満たす有理数$x$,
+$y$を考えます. 有理数$x$と$y$の分母をそろえて, それぞれを分数
+$\displaystyle x=\frac{a}{c}$,
+$\displaystyle y=\frac{b}{c}$と書く事にします.
+このとき, $x^2+y^2=3$は$a^2+b^2=3c^2$に対応します.
+本節の考察により$a$, $b$, $c$を自然数とすると$a=b=c=0$しか存在しません.
+このことは, $x^2+y^2=3$を満たす有理点が存在しないことを表します.
+
 \section*{謝辞}
 本節の内容は基本的には著者の責任でまとめていますが,
 TPPmark2014\footnote{\url{https://github.com/KyushuUniversityMathematics/TPP2014/wiki}}参加者の皆様の解答, および,
 TPP2014\footnote{\url{http://imi.kyushu- u.ac.jp/lasm/tpp2014/}}参加者のみなさまのご助言に基づいています. ここにみなさまへの感謝の意を表します. ありがとうございました. 
+
+
 
 % **)
