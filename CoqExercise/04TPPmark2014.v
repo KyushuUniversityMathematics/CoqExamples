@@ -225,9 +225,6 @@ rewrite -(modnDm (a^2) (b^2)) -(modnXm 2 3 a) -(modnXm 2 3 b).
 \end{screen}
 
 % **)
-apply (three a).
-apply (three b).
-by compute.
 by apply (three a); apply (three b); compute.
 Qed.
 
