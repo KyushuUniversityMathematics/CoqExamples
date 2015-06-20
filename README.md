@@ -14,7 +14,7 @@ https://github.com/KyushuUniversityMathematics/CoqExamples/blob/master/20150218/
 * Coq Excercise (Ver.0.1) 4 Chapters  
 Including a guided proof of TPPmark2014.
 https://github.com/KyushuUniversityMathematics/TPP2014/wiki  
-* Complete PDF file  
+* Complete PDF file (embed IPA Japanse fonts)   
 https://github.com/KyushuUniversityMathematics/CoqExamples/blob/master/CoqExercise/CoqExercise.pdf  
 * Source files
 https://github.com/KyushuUniversityMathematics/CoqExamples/tree/master/CoqExercise  
