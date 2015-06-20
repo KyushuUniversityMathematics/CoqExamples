@@ -1,0 +1,74 @@
+% tiny(50%), scriptsize(70%), footnotesize(80%), normalsize(100%)
+% large(120%), Large(140%), LARGE(170%), huge(210%), Huge(250%)
+\documentclass{jreport}
+\usepackage[]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fullpage}
+\usepackage[color]{coqdoc}
+\usepackage{amsmath,amssymb,color,listings,ascmac}
+\usepackage{graphicx,txfonts}
+\usepackage{dashbox,arydshln}
+\usepackage[UglyObsolete]{diagrams}
+\diagramstyle[labelstyle=\scriptstyle]
+
+\usepackage[dvipdfm,
+  colorlinks=true,
+  bookmarks=true,
+  bookmarksnumbered=false,
+  bookmarkstype=toc]{hyperref}
+% 日本語しおりが字化けしないために
+\AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}
+
+
+\lstdefinelanguage{coq}[]{Caml}{
+keywords={Definition,Defined,Inductive,Fixpoint,Parameter,Module,Import,Record,Structure,Lemma,
+Theorem,Notation,Reserved,End,Proof,Goal,Qed,Variable,Variables,Hypothesis,Let}
+}
+\lstset{
+language=coq,
+basicstyle=\footnotesize\ttfamily,
+morecomment=[s][\footnotesize\itshape\rmfamily]{(*}{*)},
+morestring=[b][\footnotesize\rmfamily]",
+showstringspaces=false,
+classoffset=0,
+keywordstyle=\color{magenta},
+classoffset=1,
+morekeywords={match,with,end,Set,Prop,Type,fun,of,let,in,struct,if,is,then,else,return},keywordstyle=\color{green},
+classoffset=2,
+morekeywords={Symbol,SymbolString,State,Symbols},keywordstyle=\color{blue},
+classoffset=3,
+morekeywords={Automaton,Sticker,Domino},keywordstyle=\color{cyan},
+classoffset=4,
+morekeywords={Undefined},keywordstyle=\color{red},
+classoffset=5,
+literate={->}{$\to$}1
+{forall}{$\forall$}1
+{exists}{$\exists$}1
+{rho}{$\rho$}1
+{dstar}{${\delta^*}$}1
+{mu}{$\mu$}1
+}
+
+\newtheorem{definition}{\bf Definition}[chapter]
+\newtheorem{theorem}{\bf Theorem}[chapter]
+\newtheorem{example}{\bf Example}[chapter]
+\newtheorem{lemma}{\bf Lemma}[chapter]
+\newenvironment{code}{\footnotesize\lstlisting}{\endverbatim\normalsize}
+
+\begin{document}
+
+\title{Coq練習帳 (第0.1版)}
+\author{溝口 佳寛 \\ (九州大学マス・フォア・インダストリ研究所)}
+\date{2015/06/20 \\ Email: {\tt ym@imi.kyushu-u.ac.jp}}
+
+\maketitle
+
+\tableofcontents
+
+  \input{00Introduction.tex}
+  \input{01CertifiedFunction.tex}
+  \input{02DeMorgansLaw.tex}
+  \input{03ElementaryTactics.tex}
+  \input{04TPPmark2014.tex} % 2015/05/15
+
+\end{document}
