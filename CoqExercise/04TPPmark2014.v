@@ -179,12 +179,10 @@ Proof.
 (** %
 \begin{screen}\begin{verbatim}
 modnXm  : forall m n a : nat, (a ％％ n) ^ m = a ^ m ％[mod n]
-ltn_mod : forall m d : nat, (m ％％ d < d) = (0 < d)
 \end{verbatim}\end{screen}
 % **)
 rewrite -modnXm.
-move: (@ltn_mod a 3).
-case (a %% 3) => [|[|[|n]]] //.
+by apply (three a); compute.
 Qed.
 
 
@@ -260,7 +258,6 @@ Qed.
 Lemma lemma1 (a:nat): (a = 0 %[mod 3]) -> ((a ^ 2) = 0 %[mod 9]).
 Proof.
 rewrite -(dup a) -(modnXm 2 9 a).
-move: (@ltn_mod a 9).
 by apply (nine a);compute.
 Qed.
 
@@ -269,7 +266,7 @@ Proof.
 move => Ha Hb.
 rewrite -(modnDm (a^2) (b^2)).
 rewrite (lemma1 a Ha) (lemma1 b Hb).
-by [compute].
+by compute.
 Qed.
 
 Lemma lemma3 (c:nat): 3*c = 0 %[mod 9] -> c = 0 %[mod 3].
@@ -280,7 +277,6 @@ modnMm : forall m n d : nat, m ％％ d * (n ％％ d) = m * n ％[mod d]
 \end{verbatim}\end{screen}
 % **)
 rewrite -(dup c) -modnMm.
-move: (@ltn_mod c 9).
 by apply (nine c); compute.
 Qed.
   
