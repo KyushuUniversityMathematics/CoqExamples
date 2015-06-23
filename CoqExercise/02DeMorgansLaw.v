@@ -90,29 +90,22 @@ Proof.
 move => X1 X2 Y H.
 elim :H.
 move => H1 H2 H3.
-case :H3.
-apply H1.
-apply H2.
+case H3 ; [apply H1|apply H2].
 Qed.
 
 Lemma or_case: forall X1 X2 Y:Prop, ((X1 \/ X2) -> Y) -> ((X1 -> Y) * (X2 -> Y)).
 Proof.
 move => X1 X2 Y H.
-have :X1 -> X1 \/ X2.
-move => X11.
-left.
-apply X11.
-move => X11.
-have :X2 -> X1 \/ X2.
-move => X22.
-right.
-apply X22.
-move => X22.
+apply (pair (comp H (@or_introl X1 X2))
+            (comp H (@or_intror X1 X2))).
+Undo 1.
 apply pair.
 move => X111.
-apply (H (X11 X111)).
+apply H.
+apply (@or_introl X1 X2 X111).
 move => X222.
-apply (H (X22 X222)).
+apply H.
+apply (@or_intror X1 X2 X222).
 Qed.
 
 (** %
@@ -139,14 +132,12 @@ $f_1$が与えられたときに, $f_p$を作る方法を考えれば良い.
 Lemma DeMorgan011: ~ A1 -> ~ (A1 /\ A2).
 Proof.
 move => f1. 
-move => xy.
-apply (f1 (proj1 xy)).
+exact (comp f1 (@proj1 A1 A2)).
 Restart.
 move => f1 xy.
 elim xy.
 move => a1 a2.
-apply f1.
-apply a1.
+apply (f1 a1).
 Qed.
 
 Lemma DeMorgan012: ~ A2 -> ~ (A1 /\ A2).
@@ -177,7 +168,8 @@ $$
 
 Lemma DeMorgan01 : ~ A1 \/ ~ A2 -> ~ (A1 /\ A2).
 Proof.
-apply (or_intro (~ A1) (~ A2) (~ (A1 /\ A2)) (pair DeMorgan011 DeMorgan012)).
+apply (or_intro (~ A1) (~ A2) (~ (A1 /\ A2))
+                (pair DeMorgan011 DeMorgan012)).
 Qed.
 Print or_intro.
 Print DeMorgan011.
@@ -248,9 +240,7 @@ Proof.
 move => X1 X2 X H.
 elim :H.
 move => X11 X22 XX.
-split.
-apply (X11 XX).
-apply (X22 XX).
+split; [apply (X11 XX)|apply (X22 XX)].
 Qed.
 
 Lemma and_case: forall X1 X2 X:Prop,
@@ -307,7 +297,8 @@ $$
 
 Theorem DeMorgan02: ~ (A1 \/ A2) -> ~ A1 /\ ~ A2.
 Proof.
-apply (and_intro ( ~ A1) ( ~ A2) ( ~ (A1 \/ A2)) (pair DeMorgan021 DeMorgan022)).
+apply (and_intro ( ~ A1) ( ~ A2) ( ~ (A1 \/ A2))
+                 (pair DeMorgan021 DeMorgan022)).
 Qed.
 
 Print DeMorgan021.
@@ -675,8 +666,7 @@ Lemma ex_intros2: forall Y:Prop,
 Proof.
 move => Y fx H1.
 case H1.
-move => x Px.
-apply (fx x Px).
+apply fx.
 Qed.
 
 Theorem DeMorgan07 : (forall x, ~ P x) -> ( ~ exists x, P x).

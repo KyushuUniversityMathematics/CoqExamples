@@ -330,15 +330,20 @@ by [compute].
 move => n0 H.
 rewrite /sumA.
 fold sumA.
-(** %
-\verb|elim n; by [compute]; move => n0 H.|は,
-\verb|elim n => [//|n0 H].|と書ける.
-\verb|rewrite /sumA; fold sumA|は,
-\verb|simpl|で行える.
-% **)
 rewrite H.
 rewrite /sumB.
 apply lemma4.
+(** %
+\begin{screen}
+\verb|move => n. elim n. by [compute]. move => n0 H.|は, \\
+\verb-elim => [//|n0 H].-と書ける.\\
+\verb|rewrite /sumA; fold sumA|は \verb|simpl| で行える.
+\end{screen}
+
+% **)
+Restart.
+elim => [//|n0 H].
+simpl; rewrite H /sumB -lemma4 //.
 Qed.
 
 (** %
