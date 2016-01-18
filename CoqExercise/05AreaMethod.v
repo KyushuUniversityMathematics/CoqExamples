@@ -22,7 +22,7 @@ make
 sudo make install
 \end{verbatim}
 \end{quote}
-で, \verb|/opt/local/lib/coq/user-contrib/area_method| に実装される.
+で, \verb|/opt/local/lib/coq/user-contrib/AreaMethod| に実装される.
 再実装時は上記ディレクトリを削除してから, \verb|make|を行う.
 
 \section{Cevaの定理の証明}
