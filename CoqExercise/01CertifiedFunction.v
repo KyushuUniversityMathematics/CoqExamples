@@ -27,7 +27,8 @@ for $n \in \mathbf{N}$.
 
 % **)
 
-Require Import Ssreflect.ssreflect Ssreflect.ssrbool Ssreflect.ssrfun Ssreflect.ssrnat MathComp.div List.
+From mathcomp Require Import ssreflect ssrbool ssrfun ssrnat div.
+Require Import List Extraction.
 
 (** %
 \section{自然数の性質}
