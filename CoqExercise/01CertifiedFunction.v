@@ -381,7 +381,7 @@ Extract Inductive sumbool => "Prelude.Bool" ["Prelude.True" "Prelude.False"].
 Extract Inductive bool => "Prelude.Bool" ["Prelude.True" "Prelude.False"].
 Extract Inductive nat => "Prelude.Int" ["0" "Prelude.succ"] "(\fO fS n -> if (n Prelude.== 0) then fO () else fS (n Prelude.- 1))".
 
-Extraction "sumA.hs" sumA sumB.
+Extraction "/tmp/sumA.hs" sumA sumB.
 
 (** %
 出力されたHaskell関数のファイルを実行してみる.
