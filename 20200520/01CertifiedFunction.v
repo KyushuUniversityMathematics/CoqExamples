@@ -122,8 +122,6 @@ Proof.
   rewrite !addSn.
   rewrite H.
   apply erefl.
-Restart.
-  by [].
 Qed.
 
 (** %
